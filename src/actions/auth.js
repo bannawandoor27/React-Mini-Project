@@ -2,7 +2,6 @@ import {
     REGISTER_FAIL,
     REGISTER_SUCCESS,
     LOGIN_FAIL,
-    LOGIN_FAIL_SUCCESS,
     LOGOUT,
     SET_MESSAGE
 } from './types'

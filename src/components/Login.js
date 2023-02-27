@@ -3,7 +3,7 @@ import { Navigate,useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
 
 import Form from 'react-validation/build/form';
-import input from 'react-validation/build/input';
+import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 
 import {login} from '../actions/auth';

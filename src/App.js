@@ -6,11 +6,13 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import BoardUser from "./components/BoardUser";
 import BoardAdmin from "./components/BoardAdmin";
+import { useEffect,useState,useCallback } from 'react';
 
 import { logout } from "./actions/auth";
 import { clearMessage } from "./actions/message";
 import { useDispatch, useSelector } from "react-redux";
 import { Route,Routes,Link,useLocation } from 'react-router-dom';
+import './App.css'
 
 const App = () => {
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
@@ -45,7 +47,7 @@ const App = () => {
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <Link to={"/"} className="navbar-brand">
-          bezKoder
+          Test App
         </Link>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -117,7 +119,6 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/user" element={<BoardUser />} />
-          <Route path="/mod" element={<BoardModerator />} />
           <Route path="/admin" element={<BoardAdmin />} />
         </Routes>
       </div>
