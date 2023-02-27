@@ -122,3 +122,5 @@ return(
 );
 
 };
+
+export default Login;
