@@ -47,6 +47,15 @@ const required = (value) => {
       );
     }
   };
+  const vmobilenumber = (value) => {
+    if(value.length < 10 || value.length > 10) {
+      return (
+        <div className="alert alert-danger" role="alert">
+          Mobile number must be 10 digits.
+        </div>
+      );
+    }
+  };
 
   const Register = () => {
     const form = useRef();
@@ -55,6 +64,8 @@ const required = (value) => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [mobileNumber, setMobileNumber] = useState("");
+    const [dateOfBirth, setDateOfBirth] = useState("");
     const [successful, setSuccessful] = useState(false);
   
     const { message } = useSelector(state => state.message);
@@ -69,6 +80,16 @@ const required = (value) => {
       const email = e.target.value;
       setEmail(email);
     };
+    const onChangeMobileNumber = (e) => {
+      const mobileNumber = e.target.value;
+      setMobileNumber(mobileNumber);
+    };
+    const onChangeDateOfBirth = (e) => {
+      const dateOfBirth = e.target.value;
+      setDateOfBirth(dateOfBirth);
+    };
+    
+    
   
     const onChangePassword = (e) => {
       const password = e.target.value;
@@ -128,6 +149,28 @@ const required = (value) => {
                     validations={[required, validEmail]}
                   />
                 </div>
+                <div className="form-group">
+                  <label htmlFor="number">Mobile number</label>
+                  <Input
+                    type="number"
+                    className="form-control"
+                    name="mobileNumber"
+                    value={mobileNumber}
+                    onChange={onChangeMobileNumber}
+                    validations={[required, vmobilenumber]}
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Date Of Birth</label>
+                  <Input
+                    type="date"
+                    className="form-control"
+                    name="DateOfBirth"
+                    value={dateOfBirth}
+                    onChange={onChangeDateOfBirth}
+
+                  />
+                </div>
   
                 <div className="form-group">
                   <label htmlFor="password">Password</label>
@@ -141,7 +184,7 @@ const required = (value) => {
                   />
                 </div>
   
-                <div className="form-group">
+                <div className="form-group mt-3">
                   <button className="btn btn-primary btn-block">Sign Up</button>
                 </div>
               </div>
