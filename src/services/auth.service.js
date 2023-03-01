@@ -26,6 +26,8 @@ const login = (email,password) =>
         return response.data;
     })
 
+
+
 const logout = () => localStorage.removeItem('user');
 
 export default {
