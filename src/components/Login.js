@@ -5,7 +5,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
-
+import {isEmail} from "validator";
 import {login} from '../actions/auth';
 
 const required = (value) => {
@@ -26,7 +26,7 @@ const Login = (props) => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const [loading,setLoading] = useState(false);
-    
+
     const {isLoggedIn} = useSelector((state) => state.auth);
     const {message} = useSelector((state) => state.message);
 
@@ -36,7 +36,15 @@ const Login = (props) => {
         const email = e.target.value;
         setEmail(email);
     };
-
+    const validEmail = (value) => {
+      if (!isEmail(value)) {
+        return (
+          <div className="alert alert-danger" role="alert">
+            This is not a valid email!
+          </div>
+        );
+      }
+    };
     const onChangePassword = (e) => {
         const password = e.target.value;
         setPassword(password);
@@ -63,7 +71,7 @@ const Login = (props) => {
 
 };
 if(isLoggedIn)
-    <Navigate to="/profile"/>;
+    <Navigate to="api/profile"/>;
 
 return(
     <div className="col-md-12">
@@ -83,7 +91,7 @@ return(
             name="email"
             value={email}
             onChange={onChangeEmail}
-            validations={[required]}
+            validations={[required,validEmail]}
           />
         </div>
 
@@ -100,7 +108,7 @@ return(
         </div>
 
         <div className="form-group">
-          <button className="btn btn-primary btn-block" disabled={loading}>
+          <button className="btn btn-primary btn-block mt-3" disabled={loading}>
             {loading && (
               <span className="spinner-border spinner-border-sm"></span>
             )}
