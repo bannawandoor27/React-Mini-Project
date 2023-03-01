@@ -1,13 +1,23 @@
-import React from "react";
+import React,{useRef} from "react";
 import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Form from 'react-validation/build/form';
+import { FileUpload } from 'primereact/fileupload';
+import { Toast } from 'primereact/toast';
+import 'primereact/resources/primereact.css';                       // core css
+import 'primeicons/primeicons.css';                                 // icons
+import 'primeflex/primeflex.css';     
 const Profile = () => {
+  const toast = useRef(null);
   const { user: currentUser } = useSelector((state) => state.auth);
   console.log(currentUser)
   if (!currentUser) {
     return <Navigate to="/login" />;
   }
+
+  const onUpload = () => {
+      toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
+  };
   
   return (
     <div className="container">
@@ -42,7 +52,12 @@ const Profile = () => {
         {currentUser.roles &&
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
       </ul>
-
+        <h4>Change Profile Picture here</h4>
+        
+        <div className="card flex justify-content-center" >
+            <Toast ref={toast}></Toast>
+            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" maxFileSize={1000000} onUpload={onUpload} auto chooseLabel="Browse" />
+        </div> 
     </div>
   );
 };
