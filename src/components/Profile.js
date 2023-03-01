@@ -12,6 +12,17 @@ const Profile = () => {
   return (
     <div className="container">
       <header className="jumbotron">
+        <img style={{
+          width:'200px',
+          height:'200px',
+          borderRadius:'50%',
+          objectFit:'cover'
+
+        }}  
+        src={currentUser.profile_picture} alt="profile" 
+        />
+        {console.log(currentUser.profile_picture)}
+
         <h3>
           <strong>{currentUser.username}</strong> Profile
         </h3>
