@@ -3,16 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { FileUpload } from 'primereact/fileupload';
 import { Toast } from 'primereact/toast';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
-import 'primereact/resources/primereact.css';                       // core css
-import 'primeicons/primeicons.css';                                 // icons
-import 'primeflex/primeflex.css';  
-const Profile = () => {
-  const toast = useRef(null);
 
-  const onUpload = () => {
-      toast.current.show({ severity: 'info', summary: 'Success', detail: 'File Uploaded' });
-  };
+const Profile = () => {
+
   const { user: currentUser } = useSelector((state) => state.auth);
   console.log(currentUser)
   if (!currentUser) {
@@ -55,9 +48,6 @@ const Profile = () => {
       </ul>
         <h4>Change Profile Picture here</h4>
 
-        <Toast ref={toast}></Toast>
-        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" maxFileSize={1000000} onUpload={onUpload} />
-         
     </div>
   );
 };

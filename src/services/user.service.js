@@ -14,5 +14,6 @@ const imageUpload = (file) => axios.put(API_URL+'upload/', file, {headers: auth_
 export default {
         getPublicContent,
         getAdminBoard,
-        getUserBoard
+        getUserBoard,
+        imageUpload
 };
