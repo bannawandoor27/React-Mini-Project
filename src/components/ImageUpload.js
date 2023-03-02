@@ -9,13 +9,12 @@ function ImageUpload() {
         setImage(e.target.files[0])
     }
     const handleFileUpload = (e) => {
-        const fd  = new FormData();
-        fd.append('image',image,image.name)
-        console.log(fd)
-        UserService.imageUpload(fd).then((res) => {
+        const formData = new FormData()
+        formData.append('filename',image);
+        UserService.imageUpload(formData).then((res)=>{
             console.log(res)
-    })
-}
+        })
+    }
   return (
     <div>
         <input type='file' onChange={handleFileChange}   />

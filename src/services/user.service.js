@@ -7,9 +7,9 @@ const getPublicContent = () => axios.get(API_URL+'all');
 
 const getUserBoard = () => axios.get(API_URL+'profile/',{headers: auth_header()});
 
-const getAdminBoard = () => axios.get(API_URL+'admin/',{headers: auth_header()});
+const getAdminBoard = () => axios.get(API_URL+'admin/',{headers: auth_header()+{}});
 
-const imageUpload = (file) => axios.put(API_URL+'upload/', file, {headers: auth_header()});
+const imageUpload = (file) => axios.patch(API_URL+'upload/', file, {headers: auth_header()+{'content-type':"multipart/form-data"}});
 
 export default {
         getPublicContent,
