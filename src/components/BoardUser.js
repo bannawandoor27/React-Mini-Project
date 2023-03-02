@@ -21,7 +21,7 @@ const BoardUser= ()=>{
         )
     },[])
     const header = (
-        <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+        <img alt="Card" src={`http://127.0.0.1:8000/${content.profile_picture}`} />
     );
     const footer = (
         <div className="flex flex-wrap justify-content-end gap-2">
