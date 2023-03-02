@@ -9,7 +9,7 @@ const getUserBoard = () => axios.get(API_URL+'profile/',{headers: auth_header()}
 
 const getAdminBoard = () => axios.get(API_URL+'admin/',{headers: auth_header()});
 
-const imageUpload = (file) => axios.post(API_URL+'upload', file, {headers: auth_header()});
+const imageUpload = (file) => axios.put(API_URL+'upload/', file, {headers: auth_header()});
 
 export default {
         getPublicContent,
