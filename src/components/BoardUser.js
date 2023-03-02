@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import userService from '../services/user.service';
-
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
 const BoardUser= ()=>{
     const [content,setContent]=useState('');
     
@@ -19,12 +20,35 @@ const BoardUser= ()=>{
         }
         )
     },[])
+    const header = (
+        <img alt="Card" src="https://primefaces.org/cdn/primereact/images/usercard.png" />
+    );
+    const footer = (
+        <div className="flex flex-wrap justify-content-end gap-2">
+            <Button label="Change Profile Picture" icon="pi pi-check" severity="success" />
+                {console.log(content)}
+        </div>
+    );
 
     return(
         <div className="container">
         <header className="jumbotron">
-          <h3>{content}</h3>
-          
+
+        <div className="card flex justify-content-center">
+            <Card title={content.username} subTitle={content.is_admin?'Admin':'User'} footer={footer} header={header} className="md:w-25rem">
+                <li>
+                    Phone Number: {content.mobile_number}
+                </li>
+                <li>
+                    Email: {content.email}
+                </li>
+                <li>
+                    Date Of Birth: {content.date_of_birth}
+
+                </li>
+            </Card>
+        </div>
+
         </header>
       </div>
     );
