@@ -4,30 +4,27 @@ import UserService from '../services/user.service'
 function ImageUpload() {
     const [image,setImage] = useState(null)
     useEffect(() => {
-        const formData = new FormData()
-        formData.append('filename',image);
-        UserService.imageUpload(formData).then((res)=>{
-
-        })
       }, [image]);
 
     const handleFileChange = (e) => {
         setImage(e.target.files[0]);
-        console.log(e.target.files[0]);
-        console.log(image);
         
     }
     const handleFileUpload = (e) => {
-        const formData = new FormData()
-        formData.append('filename',image);
-        UserService.imageUpload(formData).then((res)=>{
+        e.preventDefault();
+        let form_data = new FormData();
+        form_data.append('profile_picture',image,image.name);
+        UserService.imageUpload(form_data).then(res => {
 
         })
+
     }
   return (
     <div>
-        <input type='file' onChange={handleFileChange}   />
-        <button onClick={handleFileUpload}>Upload</button>
+        <form onSubmit={handleFileUpload}>
+        <input type='file' onChange={handleFileChange}   name='profile_picture'id='file'/>
+        <button type='submit'>Upload</button>
+        </form>
     </div>
   )
 }
