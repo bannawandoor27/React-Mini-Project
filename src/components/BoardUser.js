@@ -1,17 +1,33 @@
 import React,{useState,useEffect,useRef} from 'react';
 import userService from '../services/user.service';
 import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-import { Toast } from 'primereact/toast';
-import { FileUpload } from 'primereact/fileupload';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
 import 'primereact/resources/primereact.css';                       // core css
 import 'primeicons/primeicons.css';                                 // icons
 import 'primeflex/primeflex.css';  
-import Image from '../components/ImageUpload'
+
 const BoardUser= ()=>{
 
     const [content,setContent]=useState('');
+    const [image,setImage] = useState(null)
+    useEffect(() => {
+
+      }, [image]);
+
+    const handleFileChange = (e) => {
+        setImage(e.target.files[0]);
+        
+    }
+    const handleFileUpload = (e) => {
+        e.preventDefault();
+        let form_data = new FormData();
+        form_data.append('profile_picture',image,image.name);
+        userService.imageUpload(form_data).then(res => {
+            userService.getUserBoard().then((response)=>{
+                setContent(response.data);
+            })
+        })
+    }
     
     useEffect(()=>{
         userService.getUserBoard().then((response)=>{
@@ -35,7 +51,12 @@ const BoardUser= ()=>{
     const footer = (
         <div className="flex flex-wrap justify-content-center gap-2">
                 {console.log(content)}
-                <Image/>
+                <div>
+        <form onSubmit={handleFileUpload}>
+        <input type='file' onChange={handleFileChange}   name='profile_picture'id='file'/>
+        <button type='submit'>Upload</button>
+        </form>
+    </div>
         </div>
     );
 
