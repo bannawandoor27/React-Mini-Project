@@ -44,7 +44,6 @@ const BoardUser= ()=>{
         }
         )
     },[])
-
     const header = (
         <img alt="Card" src={`http://127.0.0.1:8000/${content.profile_picture}`} style={{borderRadius:'100px',height:'200px',width:'200px'}}/>
     );
@@ -83,5 +82,4 @@ const BoardUser= ()=>{
       </div>
     );
 };
-
 export default BoardUser;

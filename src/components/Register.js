@@ -17,7 +17,6 @@ const required = (value) => {
       );
     }
   };
-
   const validEmail = (value) => {
     if (!isEmail(value)) {
       return (

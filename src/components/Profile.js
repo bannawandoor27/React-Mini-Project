@@ -47,7 +47,6 @@ const Profile = () => {
           currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
       </ul>
         <h4>Change Profile Picture here</h4>
-
     </div>
   );
 };
