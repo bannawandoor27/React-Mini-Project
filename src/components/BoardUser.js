@@ -1,9 +1,9 @@
 import React,{useState,useEffect,useRef} from 'react';
 import userService from '../services/user.service';
 import { Card } from 'primereact/card';
-import 'primereact/resources/themes/lara-light-indigo/theme.css';   // theme
-import 'primereact/resources/primereact.css';                       // core css
-import 'primeicons/primeicons.css';                                 // icons
+import 'primereact/resources/themes/lara-light-indigo/theme.css';   
+import 'primereact/resources/primereact.css';                      
+import 'primeicons/primeicons.css';                                 
 import 'primeflex/primeflex.css';  
 
 const BoardUser= ()=>{
