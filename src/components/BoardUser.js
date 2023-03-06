@@ -49,7 +49,6 @@ const BoardUser= ()=>{
     );
     const footer = (
         <div className="flex flex-wrap justify-content-center gap-2">
-                {console.log(content)}
                 <div>
         <form onSubmit={handleFileUpload}>
         <input type='file' onChange={handleFileChange}   name='profile_picture'id='file'/>

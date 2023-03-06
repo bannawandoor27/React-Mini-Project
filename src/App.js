@@ -34,8 +34,8 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser.is_superuser) {
-
+    if (currentUser&&currentUser.is_superuser===true) {
+      setShowAdminBoard(true);
     } else {
       setShowAdminBoard(false);
     }

@@ -2,7 +2,10 @@ import React from 'react'
 
 function BoardAdmin() {
   return (
-    <div>This is Admin</div>
+    <div>
+        <h1 className='text-center'> Admin Dashboard </h1>
+        
+    </div>
   )
 }
 
