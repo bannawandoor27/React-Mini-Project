@@ -11,7 +11,7 @@ const imageHeader = ()=> {
             return {};
         }        
     }
-const API_URL = "http://localhost:8000/api/";
+export const API_URL = "http://localhost:8000/api/";
 
 const getPublicContent = () => axios.get(API_URL+'all');
 
@@ -21,9 +21,12 @@ const getAdminBoard = () => axios.get(API_URL+'admin/',{headers: auth_header()+{
 
 const imageUpload = (file) => axios.put(API_URL+'upload/', file, {headers: imageHeader()});
 
+
+
 export default {
         getPublicContent,
         getAdminBoard,
         getUserBoard,
-        imageUpload
+        imageUpload,
+
 };
