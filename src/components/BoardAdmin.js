@@ -3,8 +3,8 @@ import AdminServices from '../services/admin.service'
 import Table from './AdminTable'
 function BoardAdmin() {
 
-const [query,setQuery] = useState('')
-const [userdata,setUserdata] = useState([])
+const [query,setQuery] = useState('');
+const [userdata,setUserdata] = useState([]);
 
 useEffect(()=>{
    AdminServices.adminSearch(query).then((response)=>{
@@ -18,7 +18,7 @@ useEffect(()=>{
   <div className="form-outline">
     <input type="search" id="form1" className="form-control" placeholder='Search Users..' onChange={(e)=>{setQuery(e.target.value)}} />
   </div>
-  <Table data={userdata}/>
+  <Table data={userdata} />
 
 </div>
     
