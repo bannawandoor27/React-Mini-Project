@@ -121,7 +121,7 @@ const required = (value) => {
             alt="profile-img"
             className="profile-img-card"
           />
-  
+
           <Form onSubmit={handleRegister} ref={form}>
             {!successful && (
               <div>

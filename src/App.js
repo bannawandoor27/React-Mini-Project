@@ -34,8 +34,8 @@ const App = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser) {
-      // setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
+    if (currentUser.is_superuser) {
+
     } else {
       setShowAdminBoard(false);
     }
@@ -70,6 +70,7 @@ const App = () => {
             </li>
           )}
         </div>
+        
 
         {currentUser ? (
           <div className="navbar-nav ml-auto">
