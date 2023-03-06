@@ -106,6 +106,7 @@ const required = (value) => {
         dispatch(register(username, email, password))
           .then(() => {
             setSuccessful(true);
+            console.log("registereythu")
           })
           .catch(() => {
             setSuccessful(false);
@@ -188,12 +189,9 @@ const required = (value) => {
                 </div>
               </div>
             )}
-  
-            {message && (
-              <div className="form-group">
-                <div className={ successful ? "alert alert-success" : "alert alert-danger" } role="alert">
-                  {message}
-                </div>
+            {successful && (
+              <div className="alert alert-success" role="alert">
+                You have successfully registered!
               </div>
             )}
             <CheckButton style={{ display: "none" }} ref={checkBtn} />
