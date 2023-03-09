@@ -1,17 +1,21 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, createContext } from 'react'
 import AdminServices from '../services/admin.service'
 import Table from './AdminTable'
+export const reloadContext = createContext('')
 function BoardAdmin() {
-
+const [reload,SetReload] = useState(false)
 const [query,setQuery] = useState('');
 const [userdata,setUserdata] = useState([]);
+
 
 useEffect(()=>{
    AdminServices.adminSearch(query).then((response)=>{
     setUserdata(response.data)
    }) 
-},[query])
+},[query,reload])
   return (
+
+    <reloadContext.Provider value={{reload,SetReload}}>
     <div className='d-flex justify-content-center '>
     <div className=""><h1>Admin Dashboard</h1> 
 
@@ -24,6 +28,7 @@ useEffect(()=>{
     
 
     </div>
+    </reloadContext.Provider>
   )
 }
 
